@@ -27,6 +27,7 @@ public class GameObjectActivator : MonoBehaviour
         {
             item.targetState = item.defaultValue;
             item.targetGO.SetActive(item.defaultValue);
+            
         }
     }
 
