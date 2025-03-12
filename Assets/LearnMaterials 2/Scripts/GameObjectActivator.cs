@@ -7,8 +7,19 @@ using UnityEngine;
 [HelpURL("https://docs.google.com/document/d/1GP4_m0MzOF8L5t5pZxLChu3V_TFIq1czi1oJQ2X5kpU/edit?usp=sharing")]
 public class GameObjectActivator : MonoBehaviour
 {
-    private List<StateContainer> targets;
-    private bool debug;
+    /// <summary>
+    /// Список объектов, которые будут активироваться или деактивироваться.
+    /// </summary>
+    [SerializeField]
+    [Tooltip("Список объектов, которые будут активироваться или деактивироваться.")]
+    private List<StateContainer> targets = new List<StateContainer>();
+
+    /// <summary>
+    /// Включить режим отладки для вывода дополнительной информации в консоль.
+    /// </summary>
+    [SerializeField]
+    [Tooltip("Включить режим отладки для вывода дополнительной информации в консоль.")]
+    private bool debug = false;
 
     private void Awake()
     {
@@ -17,17 +28,24 @@ public class GameObjectActivator : MonoBehaviour
             item.defaultValue = item.targetGO.activeSelf;
         }
     }
+
+    /// <summary>
+    /// Активирует или деактивирует все объекты в списке.
+    /// </summary>
     public void ActivateModule()
     {
         SetStateForAll();
     }
+
+    /// <summary>
+    /// Возвращает все объекты в списке к их начальному состоянию.
+    /// </summary>
     public void ReturnToDefaultState()
     {
         foreach (var item in targets)
         {
             item.targetState = item.defaultValue;
             item.targetGO.SetActive(item.defaultValue);
-            
         }
     }
 
@@ -42,7 +60,10 @@ public class GameObjectActivator : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Элемент " + i + " равен null. Вероятно, была утеряна ссылка. Источник :" + gameObject.name);
+                if (debug)
+                {
+                    Debug.LogError("Элемент " + i + " равен null. Вероятно, была утеряна ссылка. Источник :" + gameObject.name);
+                }
             }
         }
     }
