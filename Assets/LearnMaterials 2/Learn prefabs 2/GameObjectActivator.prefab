@@ -45,13 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41c7c4c049c325147a13be56904ace6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets:
-  - targetGO: {fileID: 780059477964288740}
-    targetState: 0
-    defaultValue: 0
-  - targetGO: {fileID: 780059478107394980}
-    targetState: 1
-    defaultValue: 0
+  targets: []
+  debug: 0
 --- !u!1 &780059477964288740
 GameObject:
   m_ObjectHideFlags: 0
