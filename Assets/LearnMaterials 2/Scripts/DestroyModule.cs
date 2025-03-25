@@ -12,6 +12,10 @@ public class DestroyModule : MonoBehaviour
 
     private Transform myTransform;
 
+    public void Start()
+    {
+        ActivateModule();
+    }
     private void Awake()
     {
         myTransform = transform;

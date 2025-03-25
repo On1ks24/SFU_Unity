@@ -6,9 +6,19 @@ using UnityEngine;
 [HelpURL("https://docs.google.com/document/d/1Cmm__cbik5J8aHAI6PPaAUmEMF3wAcNo3rpgzsYPzDM/edit?usp=sharing")]
 public class TransparentModule : MonoBehaviour
 {
-    private float changeSpeed;
 
-    private float defaultAlpha;
+    [SerializeField]
+    [Tooltip("Скорость изменения масштаба.")]
+    [Range(0.1f, 10.0f)]
+    private float changeSpeed = 1.0f;
+
+    [SerializeField]
+    [Tooltip("Значение альфа-канала по умолчанию.")]
+    [Range(0.0f, 1.0f)]
+    private float defaultAlpha = 1.0f;
+
+    [SerializeField]
+    [Tooltip("Материал объекта.")]
     private Material mat;
     private bool toDefault;
 
@@ -17,6 +27,7 @@ public class TransparentModule : MonoBehaviour
         mat = GetComponent<Renderer>().material;
         defaultAlpha = mat.color.a;
         toDefault = false;
+        ActivateModule();
     }
 
     public void ActivateModule()
